@@ -8,6 +8,8 @@ import vistula.andriitsyhaniuk.office.dto.EmployeeResponseDto;
 import vistula.andriitsyhaniuk.office.entity.Employee;
 import vistula.andriitsyhaniuk.office.service.EmployeeService;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/employees")
@@ -18,6 +20,11 @@ public class EmployeeController {
     @PostMapping()
     public ResponseEntity<EmployeeResponseDto> createEmployee(@RequestBody EmployeeRequestDto employeeRequest) {
         return ResponseEntity.ok(employeeService.createEmployee(employeeRequest));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        return ResponseEntity.ok((employeeService.getAllEmployees()));
     }
 
     @GetMapping("/{id}")

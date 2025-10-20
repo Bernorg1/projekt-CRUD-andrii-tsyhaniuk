@@ -8,6 +8,8 @@ import vistula.andriitsyhaniuk.office.dto.EmployeeResponseDto;
 import vistula.andriitsyhaniuk.office.entity.Employee;
 import vistula.andriitsyhaniuk.office.repository.EmployeeRepository;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -42,5 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee savedEmployee = employeeRepository.save(employee);
 
         return modelMapper.map(savedEmployee, EmployeeResponseDto.class);
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
     }
 }
