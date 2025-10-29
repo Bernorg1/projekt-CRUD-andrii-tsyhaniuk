@@ -1,14 +1,17 @@
-package vistula.andriitsyhaniuk.office.controller;
+package vistula.andriitsyhaniuk.office.employee.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vistula.andriitsyhaniuk.office.dto.EmployeeRequestDto;
-import vistula.andriitsyhaniuk.office.dto.EmployeeResponseDto;
-import vistula.andriitsyhaniuk.office.entity.Employee;
-import vistula.andriitsyhaniuk.office.service.EmployeeService;
+import vistula.andriitsyhaniuk.office.employee.dto.EmployeeRequestDto;
+import vistula.andriitsyhaniuk.office.employee.dto.EmployeeResponseDto;
+import vistula.andriitsyhaniuk.office.employee.entity.Employee;
+import vistula.andriitsyhaniuk.office.employee.entity.EmployeeRole;
+import vistula.andriitsyhaniuk.office.employee.service.EmployeeRoleService;
+import vistula.andriitsyhaniuk.office.employee.service.EmployeeService;
 
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,6 +19,7 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private final EmployeeRoleService employeeRoleService;
 
     @PostMapping()
     public ResponseEntity<EmployeeResponseDto> createEmployee(@RequestBody EmployeeRequestDto employeeRequest) {
@@ -30,6 +34,10 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponseDto> getEmployeeById(@PathVariable long id) {
         return ResponseEntity.ok((employeeService.getEmployeeById(id)));
+    }
+    @GetMapping("/{userId}/roles")
+    public ResponseEntity<Set<EmployeeRole>> getUserRoles(@PathVariable Long userId) {
+        return ResponseEntity.ok(employeeRoleService.getEmployeeRoles(userId));
     }
 
     @DeleteMapping("/{id}")

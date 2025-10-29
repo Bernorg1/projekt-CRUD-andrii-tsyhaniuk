@@ -1,4 +1,4 @@
-package vistula.andriitsyhaniuk.office.frontend;
+package vistula.andriitsyhaniuk.office.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

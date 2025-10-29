@@ -1,8 +1,8 @@
-package vistula.andriitsyhaniuk.office.service;
+package vistula.andriitsyhaniuk.office.employee.service;
 
-import vistula.andriitsyhaniuk.office.dto.EmployeeRequestDto;
-import vistula.andriitsyhaniuk.office.dto.EmployeeResponseDto;
-import vistula.andriitsyhaniuk.office.entity.Employee;
+import vistula.andriitsyhaniuk.office.employee.dto.EmployeeRequestDto;
+import vistula.andriitsyhaniuk.office.employee.dto.EmployeeResponseDto;
+import vistula.andriitsyhaniuk.office.employee.entity.Employee;
 
 import java.util.List;
 
