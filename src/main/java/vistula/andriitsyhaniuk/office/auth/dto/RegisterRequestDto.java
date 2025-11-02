@@ -1,5 +1,6 @@
 package vistula.andriitsyhaniuk.office.auth.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,7 @@ public class RegisterRequestDto {
     private String password;
     private String name;
     private String firstName;
+
+    @JsonProperty("roles")
     private Set<EmployeeRole> roles;
 }

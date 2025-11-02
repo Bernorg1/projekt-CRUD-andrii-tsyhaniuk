@@ -23,6 +23,7 @@ public class Employee {
     @Column(nullable = false, unique = true)
     private String login;
 
+    @Column(nullable = false)
     private String password;
 
     @Column(name = "name")
@@ -37,6 +38,7 @@ public class Employee {
     @Column(name = "title")
     private String title;
 
+    @Builder.Default
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "employee_roles",

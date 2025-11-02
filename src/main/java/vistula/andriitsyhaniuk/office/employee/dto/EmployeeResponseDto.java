@@ -19,6 +19,7 @@ public class EmployeeResponseDto {
     private String firstName;
     private int age;
     private String title;
+
     private EmployeeRole role;
     private LocalDateTime createdAt;
 }
