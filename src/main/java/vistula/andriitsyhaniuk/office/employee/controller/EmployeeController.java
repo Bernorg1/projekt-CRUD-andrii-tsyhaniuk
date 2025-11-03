@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vistula.andriitsyhaniuk.office.employee.dto.EmployeeRequestDto;
 import vistula.andriitsyhaniuk.office.employee.dto.EmployeeResponseDto;
-import vistula.andriitsyhaniuk.office.employee.entity.Employee;
 import vistula.andriitsyhaniuk.office.employee.entity.EmployeeRole;
 import vistula.andriitsyhaniuk.office.employee.service.EmployeeRoleService;
 import vistula.andriitsyhaniuk.office.employee.service.EmployeeService;
@@ -27,7 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Employee>> getAllEmployees() {
+    public ResponseEntity<List<EmployeeResponseDto>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 

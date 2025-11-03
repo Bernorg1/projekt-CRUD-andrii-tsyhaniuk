@@ -18,6 +18,8 @@ public class RegisterRequestDto {
     private String password;
     private String name;
     private String firstName;
+    private int age;
+    private String title;
 
     @JsonProperty("roles")
     private Set<EmployeeRole> roles;

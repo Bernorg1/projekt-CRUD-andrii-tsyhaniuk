@@ -7,6 +7,7 @@ import lombok.Setter;
 import vistula.andriitsyhaniuk.office.employee.entity.EmployeeRole;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,7 +20,6 @@ public class EmployeeResponseDto {
     private String firstName;
     private int age;
     private String title;
-
-    private EmployeeRole role;
+    private Set<EmployeeRole> roles;
     private LocalDateTime createdAt;
 }

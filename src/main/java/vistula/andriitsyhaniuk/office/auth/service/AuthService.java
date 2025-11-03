@@ -51,6 +51,8 @@ public class AuthService {
                 .firstName(request.getFirstName())
                 .login(request.getLogin())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .age(request.getAge())
+                .title(request.getTitle())
                 .roles(roles)
                 .createdAt(LocalDateTime.now())
                 .build();
@@ -62,7 +64,7 @@ public class AuthService {
 
     public LoginResponseDto login(LoginRequestDto request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getLogin(), request.getPassword()));
-        var user = employeeRepository.findByLogin(request.getLogin())
+        var user = employeeRepository.findByLoginWithRoles(request.getLogin())
                 .orElseThrow(() -> new UsernameNotFoundException(request.getLogin()));
         var jwtToken = jwtProvider.generateToken(new EmployeePrincipal(user));
         return LoginResponseDto.builder().accessToken(jwtToken).build();

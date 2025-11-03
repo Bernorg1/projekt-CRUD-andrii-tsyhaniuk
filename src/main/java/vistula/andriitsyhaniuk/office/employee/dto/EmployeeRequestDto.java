@@ -1,6 +1,5 @@
 package vistula.andriitsyhaniuk.office.employee.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +19,5 @@ public class EmployeeRequestDto {
     private int age;
     private String title;
     private String password;
-
-    @JsonProperty("role")
     private Set<EmployeeRole> roles;
 }

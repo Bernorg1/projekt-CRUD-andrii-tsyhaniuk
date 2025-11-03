@@ -2,7 +2,6 @@ package vistula.andriitsyhaniuk.office.employee.service;
 
 import vistula.andriitsyhaniuk.office.employee.dto.EmployeeRequestDto;
 import vistula.andriitsyhaniuk.office.employee.dto.EmployeeResponseDto;
-import vistula.andriitsyhaniuk.office.employee.entity.Employee;
 
 import java.util.List;
 
@@ -15,5 +14,5 @@ public interface EmployeeService {
 
     EmployeeResponseDto updateUser(Long id, EmployeeRequestDto employeeRequest);
 
-    List<Employee> getAllEmployees();
+    List<EmployeeResponseDto> getAllEmployees();
 }

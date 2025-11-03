@@ -1,5 +1,6 @@
 package vistula.andriitsyhaniuk.office.employee.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class Employee {
     private String login;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @Column(name = "name")
@@ -39,7 +41,7 @@ public class Employee {
     private String title;
 
     @Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "employee_roles",
             joinColumns = @JoinColumn(name = "employee_id"),

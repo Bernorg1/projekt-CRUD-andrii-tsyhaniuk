@@ -89,13 +89,35 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeResponseDto> getAllEmployees() {
+        return employeeRepository.findAll().stream()
+                .map(this::mapToResponseDto)
+                .collect(Collectors.toList());
     }
 
     private void validatePassword(String password) {
         if (password == null || password.isBlank()) {
             throw new IllegalArgumentException("Password must not be empty");
         }
+    }
+
+    private EmployeeResponseDto mapToResponseDto(Employee employee) {
+        EmployeeResponseDto dto = new EmployeeResponseDto();
+        dto.setId(employee.getId());
+        dto.setLogin(employee.getLogin());
+        dto.setName(employee.getName());
+        dto.setFirstName(employee.getFirstName());
+        dto.setAge(employee.getAge());
+        dto.setTitle(employee.getTitle());
+        dto.setCreatedAt(employee.getCreatedAt());
+
+        if (employee.getRoles() != null) {
+            Set<EmployeeRole> roleNames = employee.getRoles().stream()
+                    .map(Role::getName)
+                    .collect(Collectors.toSet());
+            dto.setRoles(roleNames);
+        }
+
+        return dto;
     }
 }
